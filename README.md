@@ -54,7 +54,7 @@ Each uploaded file is transformed into the following structured format:
 ```
 
 Why this structure?
-
+```
 Core Intent → What the document is fundamentally about
 
 Functional Requirements → Business or user-facing goals
@@ -66,9 +66,11 @@ Expected Output → Deliverables or results (if specified)
 Assumptions → Notes, reminders, inferred intent
 
 Missing Information → Explicit gaps (critical for AI reliability)
+```
 
 🔄 Data Flow
 
+```
 User uploads files via frontend
 
 main.py receives files via FastAPI
@@ -80,7 +82,7 @@ Extracted raw text is passed to prompt_refiner.py
 Refined JSON is returned to the frontend
 
 Frontend renders structured output (cards / JSON view)
-
+```
 
 Refined Output:
 ```
