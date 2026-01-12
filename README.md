@@ -1,6 +1,6 @@
 # Multi-Modal Prompt Refinement System
 
-A FastAPI-based backend and lightweight frontend that extracts unstructured content from multiple file types (including OCR images) and refines it into a clean, structured JSON prompt format suitable for AI pipelines.
+A FastAPI-based backend and lightweight frontend that extracts unstructured content from multiple file types such as text, docx, pdf, and images (ocr) and refines it into a clean, structured JSON prompt format suitable for AI pipelines.
 
 This project is **intentionally deterministic and rule-based**, focusing on robust extraction, OCR noise handling, and explicit missing-information detection, rather than relying on LLM hallucinations.
 
