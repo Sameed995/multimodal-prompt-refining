@@ -1,48 +1,51 @@
-Multi-Modal Prompt Refinement System
+# Multi-Modal Prompt Refinement System
 
 A FastAPI-based backend and lightweight frontend that extracts unstructured content from multiple file types (including OCR images) and refines it into a clean, structured JSON prompt format suitable for AI pipelines.
 
-This project is intentionally deterministic and rule-based, focusing on robust extraction, OCR noise handling, and explicit missing-information detection, rather than relying on LLM hallucinations.
+This project is **intentionally deterministic and rule-based**, focusing on robust extraction, OCR noise handling, and explicit missing-information detection, rather than relying on LLM hallucinations.
 
-✨ Key Features
+---
 
-📂 Upload multiple files at once
+## ✨ Key Features
 
-🖼️ OCR extraction from images using Tesseract
+- 📂 **Upload multiple files at once**
+- 🖼️ **OCR extraction from images** using Tesseract
+- 📄 **Text extraction** from PDF, DOCX, TXT
+- 🧹 **OCR noise cleaning** & line normalization
+- 🧠 **Structured prompt refinement** into JSON
+- ⚠️ **Explicit detection** of missing or ambiguous information
+- 🌐 **Simple frontend** for drag-and-drop uploads
 
-📄 Text extraction from PDF, DOCX, TXT
+---
 
-🧹 OCR noise cleaning & line normalization
+## 🏗️ Project Structure
 
-🧠 Structured prompt refinement into JSON
-
-⚠️ Explicit detection of missing or ambiguous information
-
-🌐 Simple frontend for drag-and-drop uploads
-
-🏗️ Project Structure
 ```
-├── backend
+.
+├── backend/
 │   ├── main.py                 # FastAPI app entry point
-│   ├── processors              # File-type specific extractors
+│   ├── processors/             # File-type specific extractors
 │   │   ├── dispatcher.py       # Routes files to correct processor
 │   │   ├── image.py            # OCR extraction using Tesseract
 │   │   ├── pdf.py              # PDF text extraction
 │   │   ├── docx.py             # DOCX text extraction
 │   │   └── text.py             # Plain text extraction
-│   └── refiners
+│   └── refiners/
 │       └── prompt_refiner.py   # Core prompt refinement logic
 │
-└── frontend
+└── frontend/
     ├── index.html              # UI for file upload
     ├── script.js               # API calls + JSON rendering
     └── style.css               # Basic styling
 ```
-🧠 Prompt Refinement Output (JSON Schema)
+
+---
+
+## 🧠 Prompt Refinement Output (JSON Schema)
 
 Each uploaded file is transformed into the following structured format:
 
-```
+```json
 {
   "core_intent": "string",
   "functional_requirements": ["string"],
@@ -53,39 +56,40 @@ Each uploaded file is transformed into the following structured format:
 }
 ```
 
-Why this structure?
+### Why this structure?
+
+- **`core_intent`** → What the document is fundamentally about
+- **`functional_requirements`** → Business or user-facing goals
+- **`technical_constraints`** → Technology, tools, platforms, or implementation details
+- **`expected_output`** → Deliverables or results (if specified)
+- **`assumptions`** → Notes, reminders, inferred intent
+- **`missing_information`** → Explicit gaps (critical for AI reliability)
+
+---
+
+## 🔄 Data Flow
+
+1. User uploads files via frontend
+2. `main.py` receives files via FastAPI
+3. `dispatcher.py` routes each file to the correct processor
+4. Extracted raw text is passed to `prompt_refiner.py`
+5. Refined JSON is returned to the frontend
+6. Frontend renders structured output (cards / JSON view)
+
+### Example Input
+
 ```
-Core Intent → What the document is fundamentally about
-
-Functional Requirements → Business or user-facing goals
-
-Technical Constraints → Technology, tools, platforms, or implementation details
-
-Expected Output → Deliverables or results (if specified)
-
-Assumptions → Notes, reminders, inferred intent
-
-Missing Information → Explicit gaps (critical for AI reliability)
+Project Alpha - Q4 Goals
+- Launch new website
+- Develop mobile app
+- Expand to EU market
+TODO: Market research, content creation
+Technical: UI/UX design mockups, backend setup
 ```
 
-🔄 Data Flow
+### Refined Output
 
-```
-User uploads files via frontend
-
-main.py receives files via FastAPI
-
-dispatcher.py routes each file to the correct processor
-
-Extracted raw text is passed to prompt_refiner.py
-
-Refined JSON is returned to the frontend
-
-Frontend renders structured output (cards / JSON view)
-```
-
-Refined Output:
-```
+```json
 {
   "core_intent": "Project Alpha - Q4 Goals",
   "functional_requirements": [
@@ -106,67 +110,109 @@ Refined Output:
   ]
 }
 ```
-🛠️ Tech Stack
-Backend
 
-Python 3.12
+---
 
-FastAPI
+## 🛠️ Tech Stack
 
-Tesseract OCR
+### Backend
+- Python 3.12
+- FastAPI
+- Tesseract OCR
+- Pillow
+- python-docx
+- PyPDF2
 
-Pillow
+### Frontend
+- HTML
+- Vanilla JavaScript
+- CSS
 
-python-docx
+---
 
-PyPDF2
+## ▶️ Running the Project
 
-Frontend
+### Prerequisites
 
-HTML
+Ensure you have the following installed:
+- Python 3.12+
+- Tesseract OCR ([installation guide](https://github.com/tesseract-ocr/tesseract))
+- pip (Python package manager)
 
-Vanilla JavaScript
+### Backend Setup
 
-CSS
+1. Navigate to the backend directory:
+   ```bash
+   cd backend
+   ```
 
-▶️ Running the Project
+2. Install Python dependencies:
+   ```bash
+   pip install fastapi uvicorn pillow python-docx PyPDF2 pytesseract
+   ```
+
+3. Start the FastAPI server:
+   ```bash
+   uvicorn main:app --reload
+   ```
+
+Backend runs at: **`http://localhost:8000`**
+
+### Frontend Setup
+
+Simply open the frontend HTML file in your browser:
+
+```bash
+cd frontend
+open index.html
 ```
-Backend
-cd backend
-uvicorn main:app --reload
+
+Or serve it using a local static server if needed:
+
+```bash
+python -m http.server 3000
 ```
 
-Backend runs at:
+Then navigate to: **`http://localhost:3000`**
 
-```
-http://localhost:8000
-```
-Frontend
-```
-Open directly:
+---
 
-frontend/index.html
-```
+## 🎯 Design Philosophy
 
-(Or serve via a local static server if needed.)
+- **No LLM dependency** for parsing or structuring
+- **Explicit over implicit** (missing info is surfaced)
+- **OCR-aware parsing** (handles broken lines, merged columns, junk symbols)
+- **Production-friendly JSON output**
 
-🎯 Design Philosophy
+This approach ensures reliability, predictability, and transparency in content extraction and structuring, making it ideal for AI pipelines that require high-quality, validated inputs.
 
-No LLM dependency for parsing or structuring
+---
 
-Explicit over implicit (missing info is surfaced)
+## 📌 Future Improvements
 
-OCR-aware parsing (handles broken lines, merged columns, junk symbols)
+- [ ] Layout-aware OCR (bounding boxes)
+- [ ] CSV / XLSX support
+- [ ] Confidence scoring per extracted item
+- [ ] Export refined prompts as downloadable JSON
+- [ ] Batch processing with progress tracking
+- [ ] Support for additional file formats (Markdown, HTML)
+- [ ] API documentation with Swagger/OpenAPI
+- [ ] Docker containerization for easy deployment
 
-Production-friendly JSON output
+---
 
-📌 Future Improvements
+## 📝 License
 
-Layout-aware OCR (bounding boxes)
+This project is open source and available under the [MIT License](LICENSE).
 
-CSV / XLSX support
+---
 
-Confidence scoring per extracted item
+## 🤝 Contributing
 
-Export refined prompts as downloadable JSON
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](../../issues).
 
+---
+
+## 📧 Contact
+
+For questions or feedback, please open an issue or reach out via the repository's discussion board.
