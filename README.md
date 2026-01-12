@@ -6,7 +6,7 @@ This project is **intentionally deterministic and rule-based**, focusing on robu
 
 ---
 
-## ✨ Key Features
+## Key Features
 
 - 📂 **Upload multiple files at once**
 - 🖼️ **OCR extraction from images** using Tesseract
@@ -18,7 +18,7 @@ This project is **intentionally deterministic and rule-based**, focusing on robu
 
 ---
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 .
@@ -41,7 +41,7 @@ This project is **intentionally deterministic and rule-based**, focusing on robu
 
 ---
 
-## 🧠 Prompt Refinement Output (JSON Schema)
+## Prompt Refinement Output (JSON Schema)
 
 Each uploaded file is transformed into the following structured format:
 
@@ -67,7 +67,7 @@ Each uploaded file is transformed into the following structured format:
 
 ---
 
-## 🔄 Data Flow
+## Data Flow
 
 1. User uploads files via frontend
 2. `main.py` receives files via FastAPI
@@ -113,7 +113,7 @@ Technical: UI/UX design mockups, backend setup
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Backend
 - Python 3.12
@@ -130,7 +130,7 @@ Technical: UI/UX design mockups, backend setup
 
 ---
 
-## ▶️ Running the Project
+## ▶ Running the Project
 
 ### Prerequisites
 
@@ -177,7 +177,7 @@ Then navigate to: **`http://localhost:3000`**
 
 ---
 
-## 🎯 Design Philosophy
+## Design Philosophy
 
 - **No LLM dependency** for parsing or structuring
 - **Explicit over implicit** (missing info is surfaced)
