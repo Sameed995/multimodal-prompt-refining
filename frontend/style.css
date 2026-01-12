@@ -1,0 +1,201 @@
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: linear-gradient(180deg, #f5f7fb, #eef1f6);
+  margin: 0;
+  padding: 0;
+  color: #222;
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 8px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.container::before {
+  content: "Upload files → Extract → Refine";
+  display: block;
+  text-align: center;
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+
+#drop-zone {
+  width: 100%;
+  border: 2px dashed #9aa4b2;
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+  background: #fafafa;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+#drop-zone:hover {
+  background: #f1f5ff;
+  border-color: #6c8cff;
+}
+
+#drop-zone.dragover {
+  border-color: #4c6ef5;
+  background: #e9efff;
+}
+
+
+#file-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  width: 100%;
+}
+
+#file-list li {
+  font-size: 14px;
+  background: #f6f8fc;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+button {
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  background: #4c6ef5;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background: #3b5bdb;
+}
+
+
+#status {
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+
+#output {
+  margin-top: 20px;
+}
+
+
+.output-card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.output-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.file-name {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.file-type {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  background: #007bff;
+  color: white;
+}
+
+.section {
+  margin-top: 10px;
+}
+
+.section-title {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.section ul {
+  padding-left: 18px;
+  margin: 0;
+}
+
+.missing {
+  color: #c0392b;
+}
+
+.intent {
+  font-style: italic;
+  background: #f4f8ff;
+  padding: 8px;
+  border-radius: 6px;
+}
+.file-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.file-thumb {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.file-name-text {
+  font-size: 14px;
+  word-break: break-all;
+}
+#resetBtn {
+  background: #4c6ef5;
+  border: none;
+}
+
+#resetBtn:hover {
+  background: #3b5bdb;
+}
+.json-view pre {
+  white-space: pre-wrap;   
+  word-wrap: break-word;   
+  overflow-x: auto;        
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  max-height: 600px;       
+}

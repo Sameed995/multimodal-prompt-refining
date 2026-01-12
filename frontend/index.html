@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Multi-Modal Prompt Refiner</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+    <h1>Multi-Modal Prompt Refiner</h1>
+
+      <form id="uploadForm">
+    <div id="drop-zone">
+      <p>Drag & drop files here<br>or click to select</p>
+      <input
+        type="file"
+        id="files"
+        name="files"
+        multiple
+        accept=".txt,.pdf,.docx,.png,.jpg,.jpeg"
+        hidden
+      />
+    </div>
+
+  <ul id="file-list"></ul>
+
+  <button type="submit">Upload & Refine</button>
+  <button type="button" id="resetBtn">Reset</button>
+
+</form>
+
+    <div id="status"></div>
+    <button type="button" id="toggleViewBtn">Show Cards</button>
+    <div id="output"></div>
+
+
+    <div id="output"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

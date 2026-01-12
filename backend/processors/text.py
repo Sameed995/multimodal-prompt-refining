@@ -1,0 +1,5 @@
+from fastapi import UploadFile
+
+async def extract_txt(file: UploadFile) -> str:
+    content = await file.read()
+    return content.decode("utf-8", errors="ignore")
