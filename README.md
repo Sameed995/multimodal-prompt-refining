@@ -190,14 +190,11 @@ This approach ensures reliability, predictability, and transparency in content e
 
 ## 📌 Future Improvements
 
-- [ ] Layout-aware OCR (bounding boxes)
 - [ ] CSV / XLSX support
 - [ ] Confidence scoring per extracted item
 - [ ] Export refined prompts as downloadable JSON
-- [ ] Batch processing with progress tracking
 - [ ] Support for additional file formats (Markdown, HTML)
 - [ ] API documentation with Swagger/OpenAPI
-- [ ] Docker containerization for easy deployment
 
 ---
 
