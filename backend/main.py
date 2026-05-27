@@ -64,3 +64,6 @@ async def refine_prompt_endpoint(
         "message": "Prompt refined successfully",
         "results": results
     }
+
+
+# To run the app, use the command: uvicorn main:app --reload
