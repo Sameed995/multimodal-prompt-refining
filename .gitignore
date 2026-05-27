@@ -1,4 +1,4 @@
 venv/
-__pycache__/
+__pycache__/ #no need to track compiled Python files
 *.pyc
-.env
+.envgit rm -r --cached venv
